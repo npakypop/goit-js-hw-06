@@ -13,3 +13,20 @@ const images = [
   },
 ];
  
+
+const galerryRef = document.querySelector('.gallery');
+
+
+const imgList = images.map(el => `<li><img src='${el.url}' alt='${el.alt}' class='img__item' style='display: block; width: 600px; border-radius: 15px;'></img></li>`);
+galerryRef.style.listStyle = 'none';
+galerryRef.style.display = 'flex';
+galerryRef.style.flexWrap = 'wrap';
+galerryRef.style.justifyContent = 'center';
+galerryRef.style.gap = '15px';
+console.log("imgList", imgList);
+
+galerryRef.insertAdjacentHTML('afterbegin', imgList.join(''));
+
+const itemRef = document.querySelectorAll('.img__item');
+// console.log("itemRef", itemRef)
+
