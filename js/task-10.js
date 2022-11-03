@@ -1,5 +1,10 @@
+// function getRandomHexColor() {
+//   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+// }
 function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  return `#${Math.floor(Math.random() * 16777215)
+    .toString(16)
+    .padStart(6, 0)}`;
 }
 
 const createRef = document.querySelector('[data-create]');
@@ -17,13 +22,14 @@ amountRef.addEventListener('input', onAmountInput);
 function onCreatBtn() { 
   if (createBoxes().length < 1 || createBoxes().length > 100) { 
     alert('Enter correct number');
+    return;
   }
   boxesRef.append(...createBoxes());
+  amountRef.value = '';
 }
 
 function onDestroyBtn() { 
   boxesRef.innerHTML = '';
-  amountRef.value = '';
 }
 
 function onAmountInput(event) { 
@@ -33,16 +39,14 @@ function onAmountInput(event) {
 function createBoxes(amount) {
   amount = amountRef.value;
   const arr = [];
+  let width = 20;
+  let height = 20;
   for (let i = 0; i < amount; i += 1) {
-    arr.push(document.createElement('div'));
+    const item = document.createElement('div');
+    item.style.width = `${width += 10}px`;
+    item.style.height = `${height += 10}px`;
+    item.style.backgroundColor = `${getRandomHexColor()}`;
+    arr.push(item);
   }
   return arr;
 }
-
-
-// boxesRef.append(...arr);
-  // console.log("amount", amount)
-  // const arr = new Array(5);
-  // arr.forEach(el => {
-  //   el = document.createElement('div');
-  // })
