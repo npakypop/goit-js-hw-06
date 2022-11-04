@@ -20,6 +20,7 @@ destroyRef.addEventListener('click', onDestroyBtn);
 amountRef.addEventListener('input', onAmountInput);
 
 function onCreatBtn() { 
+  boxesRef.innerHTML = '';
   if (createBoxes().length < 1 || createBoxes().length > 100) { 
     alert('Enter correct number');
     return;
