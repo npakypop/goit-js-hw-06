@@ -3,7 +3,7 @@ const length = inputRef.getAttribute('data-length');
 
 
 const checkInputLength = (event) => {
-    if (inputRef.value.length < length) {
+    if (inputRef.value.length !== Number(length)) {
         event.target.classList.add('invalid');
         return;
     } 
